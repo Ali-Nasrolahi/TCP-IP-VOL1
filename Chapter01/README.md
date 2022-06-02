@@ -5,6 +5,7 @@
     - [Packets, Connections, and Datagrams](#packets-connections-and-datagrams)
     - [The End-to-End Argument and Fate Sharing](#the-end-to-end-argument-and-fate-sharing)
     - [Error Control and Flow Control](#error-control-and-flow-control)
+  - [Design and Implementation](#design-and-implementation)
 
 When a *set of common behaviors* is used with a *common language*, a **protocol** is being used.
 
@@ -92,3 +93,23 @@ The end-to-end argument tends to support a design with a **“dumb” network** 
 **Fate sharing** suggests placing **all the necessary state** to maintain an active communication association (e.g., virtual connection) at the same location with the communicating endpoints.
 
 ### Error Control and Flow Control
+
+**Error control** is dealing with some circumstances where data within a network gets **damaged** or **lost**.
+
+Usually, if a small number of bit errors are of concern, a number of mathematical codes can be used to **detect and repair** the bit errors when data is received or while it is in transit.
+> This task is routinely performed within the **network**.
+
+When more **severe damage** occurs in a packet network, entire packets are usually resent or **retransmitted**.
+
+As an alternative to the overhead of reliable, in-order delivery implemented within the network, a different type of service called **best-effort delivery** was adopted by *Frame Relay* and the *Internet Protocol* (IP).
+
+With **best-effort delivery**, the network *does not* expend much effort to ensure that data is delivered without errors or gaps.
+
+If best-effort delivery is **successful**, a fast sender can produce information at a rate that exceeds the receiver’s ability to consume it.
+
+In best-effort **IP** networks, *slowing down* a sender is achieved by **flow control** mechanisms that operate **outside the network** and at higher levels of the communication system.
+> In particular, TCP handles this type of problem.
+
+---
+
+## Design and Implementation
