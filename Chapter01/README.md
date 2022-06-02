@@ -4,6 +4,7 @@
   - [Architectural Principles](#architectural-principles)
     - [Packets, Connections, and Datagrams](#packets-connections-and-datagrams)
     - [The End-to-End Argument and Fate Sharing](#the-end-to-end-argument-and-fate-sharing)
+    - [Error Control and Flow Control](#error-control-and-flow-control)
 
 When a *set of common behaviors* is used with a *common language*, a **protocol** is being used.
 
@@ -74,3 +75,20 @@ when an application sends more than one chunk of information into the network, t
 Most datagram protocols preserve **message boundaries**.
 
 ### The End-to-End Argument and Fate Sharing
+
+When large systems such as an operating system or protocol suite are being designed, a question often arises as:
+
+- *to where a particular feature or function should be placed*
+
+One of the most important principles that influenced the design of the TCP/IP suite is called the **end-to-end** argument.
+
+In short, this principle argues that important functions (e.g., error control, encryption, delivery acknowledgment) should usually **not be implemented** at *low levels* of large systems.
+
+However, low levels may provide *capabilities* that make the job of the endpoints somewhat **easier** and consequently may **improve performance**.
+
+The end-to-end argument tends to support a design with a **“dumb” network** and **“smart” systems connected** to the network.
+> This is what we see in the TCP/IP design, where many functions are implemented in the end hosts where the applications reside.
+
+**Fate sharing** suggests placing **all the necessary state** to maintain an active communication association (e.g., virtual connection) at the same location with the communicating endpoints.
+
+### Error Control and Flow Control
