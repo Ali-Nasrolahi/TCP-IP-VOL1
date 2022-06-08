@@ -6,6 +6,8 @@
     - [The End-to-End Argument and Fate Sharing](#the-end-to-end-argument-and-fate-sharing)
     - [Error Control and Flow Control](#error-control-and-flow-control)
   - [Design and Implementation](#design-and-implementation)
+    - [Layering](#layering)
+    - [Multiplexing, Demultiplexing, and Encapsulation in Layered Implementations](#multiplexing-demultiplexing-and-encapsulation-in-layered-implementations)
 
 When a *set of common behaviors* is used with a *common language*, a **protocol** is being used.
 
@@ -113,3 +115,34 @@ In best-effort **IP** networks, *slowing down* a sender is achieved by **flow co
 ---
 
 ## Design and Implementation
+
+### Layering
+
+With layering, each layer is responsible for a different facet of the communications.
+
+Layers are beneficial because a layered design allows developers to evolve **different** portions of the system **separately**, often by different people with somewhat different areas of expertise.
+
+The most frequently mentioned concept of protocol layering is based on a standard called the **Open Systems Interconnection** (`OSI`).
+
+Although the OSI model suggests that **seven** logical layers may be desirable for modularity of a protocol architecture implementation, the TCP/IP architecture is normally considered to consist of **five**.
+
+The **physical layer** defines methods for moving digital information across a communication **medium**.
+> such as a phone line or fiber-optic cable.
+
+The **link or data-link layer** includes those protocols and methods for *establishing connectivity* to a neighbor sharing the same medium.
+
+The **network or internetwork layer** it provides an interoperable packet format that can use different types of link-layer networks for connectivity.
+
+This layer also includes an addressing scheme for hosts and **routing algorithms** that choose where packets go when sent from one machine to another.
+
+Above layer 3 we find protocols that are (at least in theory) implemented only by **end hosts**, including the **transport layer**.
+
+**Sessions** represent ongoing interactions between applications , and **session-layer** protocols may provide capabilities such as connection initiation and restart, plus *checkpointing*.
+
+The **presentation** layer, which is responsible for format conversions and standard encodings for information.
+
+The top layer is the **application layer**. Applications usually implement their own application-layer protocols.
+> These are the ones most visible to users.  
+> There is a wide variety of application-layer protocols, and programmers are constantly inventing new ones.
+
+### Multiplexing, Demultiplexing, and Encapsulation in Layered Implementations
